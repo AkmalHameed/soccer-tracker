@@ -28,7 +28,7 @@ defmodule SoccerTrackerWeb.TeamLive.Form do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} current_scope={assigns[:current_scope]}>
       <.header>Create a New Team</.header>
       <.form for={@form} phx-change="validate" phx-submit="save">
         <.input field={@form[:name]} type="text" label="Team Name" placeholder="e.g. FC Oshawa Warriors" />

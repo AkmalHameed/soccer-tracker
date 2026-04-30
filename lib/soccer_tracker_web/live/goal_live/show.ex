@@ -6,7 +6,7 @@ defmodule SoccerTrackerWeb.GoalLive.Show do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} current_scope={assigns[:current_scope]}>
       <.header>
         {@goal.type}
         <:subtitle>Goal details</:subtitle>

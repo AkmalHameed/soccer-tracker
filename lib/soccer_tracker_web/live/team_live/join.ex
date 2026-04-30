@@ -23,7 +23,7 @@ defmodule SoccerTrackerWeb.TeamLive.Join do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} current_scope={assigns[:current_scope]}>
       <div class="max-w-md mx-auto text-center space-y-6 mt-20">
         <%= if @invite do %>
           <div class="text-6xl">⚽</div>

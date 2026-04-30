@@ -35,51 +35,33 @@ defmodule SoccerTrackerWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     live_session :require_authenticated_user,
-      on_mount: [
-        {SoccerTrackerWeb.UserAuth, :require_authenticated},
-        {SoccerTrackerWeb.UserAuth, :mount_current_scope}
-      ] do
+      on_mount: [{SoccerTrackerWeb.UserAuth, :require_authenticated}] do
 
       live "/users/settings", UserLive.Settings, :edit
       live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
 
-      # Dashboard
       live "/dashboard", DashboardLive, :index
-
-      # Sessions
       live "/sessions", SessionLive.Index, :index
       live "/sessions/new", SessionLive.Form, :new
       live "/sessions/:id", SessionLive.Show, :show
       live "/sessions/:id/edit", SessionLive.Form, :edit
-
-      # Drills (personal)
       live "/drills", DrillLive.Index, :index
       live "/drills/new", DrillLive.Form, :new
       live "/drills/:id", DrillLive.Show, :show
       live "/drills/:id/edit", DrillLive.Form, :edit
-
-      # Goals
       live "/goals", GoalLive.Index, :index
       live "/goals/new", GoalLive.Form, :new
       live "/goals/:id", GoalLive.Show, :show
       live "/goals/:id/edit", GoalLive.Form, :edit
-
-      # Game Logs (Match History)
       live "/games", GameLogLive.Index, :index
       live "/games/new", GameLogLive.Form, :new
       live "/games/:id", GameLogLive.Show, :show
       live "/games/:id/edit", GameLogLive.Form, :edit
-
-      # Teams
       live "/teams", TeamLive.Index, :index
       live "/teams/new", TeamLive.Form, :new
       live "/teams/:id", TeamLive.Show, :show
       live "/teams/join/:token", TeamLive.Join, :index
-
-      # Drill Library
       live "/library", LibraryLive.Index, :index
-
-      # Training Programs
       live "/programs", ProgramLive.Index, :index
     end
 

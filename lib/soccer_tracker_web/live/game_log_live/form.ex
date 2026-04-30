@@ -50,7 +50,7 @@ defmodule SoccerTrackerWeb.GameLogLive.Form do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} current_scope={assigns[:current_scope]}>
       <.header>{@page_title}</.header>
       <.form for={@form} phx-change="validate" phx-submit="save">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6">

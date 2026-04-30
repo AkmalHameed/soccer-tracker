@@ -11,7 +11,7 @@ defmodule SoccerTrackerWeb.GameLogLive.Show do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} current_scope={assigns[:current_scope]}>
       <.header>
         Match vs {@game.opponent || "Unknown Opponent"}
         <:subtitle>{@game.date}</:subtitle>

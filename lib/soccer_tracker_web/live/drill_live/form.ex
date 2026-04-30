@@ -7,7 +7,7 @@ defmodule SoccerTrackerWeb.DrillLive.Form do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} current_scope={assigns[:current_scope]}>
       <.header>
         {@page_title}
         <:subtitle>Record a drill from your training session.</:subtitle>
