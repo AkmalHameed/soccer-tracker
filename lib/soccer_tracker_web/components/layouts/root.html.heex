@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="Soccer Tracker" suffix=" · Soccer Tracker">
+      {assigns[:page_title]}
+    </.live_title>
+
+    <%!-- PWA Meta Tags --%>
+    <meta name="description" content="Track your soccer training sessions, drills, and goals" />
+    <meta name="application-name" content="Soccer Tracker" />
+    <meta name="theme-color" content="#570df8" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <%!-- Apple PWA (iOS) Meta Tags --%>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Soccer Tracker" />
+
+    <%!-- PWA Manifest --%>
+    <link rel="manifest" href="/manifest.json" />
+
+    <%!-- Favicon & App Icons --%>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+
+    <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
+    </script>
+    <%!-- Service Worker Registration --%>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+    <script>
+      (() => {
+        const setTheme = (theme) => {
+          if (theme === "system") {
+            localStorage.removeItem("phx:theme");
+            document.documentElement.removeAttribute("data-theme");
+          } else {
+            localStorage.setItem("phx:theme", theme);
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        };
+        if (!document.documentElement.hasAttribute("data-theme")) {
+          setTheme(localStorage.getItem("phx:theme") || "system");
+        }
+        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
+        window.addEventListener("phx:set-theme", (e) => setTheme(e.target.dataset.phxTheme));
+      })();
+    </script>
+  </head>
+  <body>
+    {@inner_content}
+  </body>
+</html>

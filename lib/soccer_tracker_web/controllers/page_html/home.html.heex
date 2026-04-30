@@ -1,0 +1,132 @@
+<div class="min-h-screen bg-[#0a0e1a] text-white overflow-hidden">
+
+  <%!-- Animated pitch background --%>
+  <div class="fixed inset-0 pointer-events-none">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 60%, #0d2a1a 0%, #0a0e1a 70%);"></div>
+    <svg class="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <rect x="100" y="50" width="1000" height="700" fill="none" stroke="#4ade80" stroke-width="2"/>
+      <line x1="600" y1="50" x2="600" y2="750" stroke="#4ade80" stroke-width="2"/>
+      <circle cx="600" cy="400" r="120" fill="none" stroke="#4ade80" stroke-width="2"/>
+      <circle cx="600" cy="400" r="4" fill="#4ade80"/>
+      <rect x="100" y="280" width="150" height="240" fill="none" stroke="#4ade80" stroke-width="2"/>
+      <rect x="950" y="280" width="150" height="240" fill="none" stroke="#4ade80" stroke-width="2"/>
+      <rect x="100" y="320" width="60" height="160" fill="none" stroke="#4ade80" stroke-width="2"/>
+      <rect x="1040" y="320" width="60" height="160" fill="none" stroke="#4ade80" stroke-width="2"/>
+    </svg>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-10"
+      style="background: radial-gradient(circle, #22c55e, transparent); filter: blur(60px);"></div>
+  </div>
+
+  <%!-- Nav --%>
+  <nav class="relative z-10 flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+    <div class="flex items-center gap-3">
+      <span class="text-3xl">⚽</span>
+      <span class="text-xl font-black" style="font-family: Georgia, serif;">
+        Soccer<span class="text-green-400">Tracker</span>
+      </span>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="/users/log-in" class="text-white/70 hover:text-white transition-colors font-medium">Log in</a>
+      <a href="/users/register"
+        class="px-5 py-2.5 rounded-full font-bold text-sm transition-all hover:scale-105 text-white"
+        style="background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 0 20px rgba(34,197,94,0.4);">
+        Get Started Free
+      </a>
+    </div>
+  </nav>
+
+  <%!-- Hero --%>
+  <section class="relative z-10 max-w-7xl mx-auto px-8 pt-20 pb-32 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-green-400 mb-8"
+      style="background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);">
+      ⚡ Free forever · No Apple Watch required · Works on any device
+    </div>
+    <h1 class="text-7xl font-black mb-6 leading-none" style="font-family: Georgia, serif;">
+      Train Smarter.<br/>
+      <span style="background: linear-gradient(135deg, #22c55e, #4ade80, #86efac); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        Play Better.
+      </span>
+    </h1>
+    <p class="text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+      Track every session, log every match, master every drill.
+      The complete soccer training platform built for players who are serious about improving.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="/users/register"
+        class="px-8 py-4 rounded-full font-black text-lg transition-all hover:scale-105 text-white"
+        style="background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 0 40px rgba(34,197,94,0.4);">
+        Start Tracking Free →
+      </a>
+      <a href="/users/log-in"
+        class="px-8 py-4 rounded-full font-bold text-lg text-white/80 hover:text-white transition-all"
+        style="border: 1px solid rgba(255,255,255,0.15);">
+        I have an account
+      </a>
+    </div>
+    <div class="flex flex-wrap justify-center gap-12 mt-20">
+      <div class="text-center"><p class="text-4xl font-black text-green-400" style="font-family: Georgia, serif;">14+</p><p class="text-sm text-white/50 mt-1">Drill Templates</p></div>
+      <div class="text-center"><p class="text-4xl font-black text-green-400" style="font-family: Georgia, serif;">6</p><p class="text-sm text-white/50 mt-1">Training Programs</p></div>
+      <div class="text-center"><p class="text-4xl font-black text-green-400" style="font-family: Georgia, serif;">100%</p><p class="text-sm text-white/50 mt-1">Free to Use</p></div>
+      <div class="text-center"><p class="text-4xl font-black text-green-400" style="font-family: Georgia, serif;">0</p><p class="text-sm text-white/50 mt-1">Apple Watches Needed</p></div>
+    </div>
+  </section>
+
+  <%!-- Features --%>
+  <section class="relative z-10 max-w-7xl mx-auto px-8 pb-32">
+    <h2 class="text-4xl font-black text-center mb-4" style="font-family: Georgia, serif;">
+      Everything you need to <span class="text-green-400">level up</span>
+    </h2>
+    <p class="text-center text-white/50 mb-16">Built for players. Better than anything in the App Store.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-2xl p-6 hover:-translate-y-1 transition-all" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="text-4xl mb-4">🏟️</div>
+        <h3 class="text-lg font-black mb-2 text-green-400">Match History</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Log every game with full stats — goals, assists, shots, saves, ratings and more.</p>
+      </div>
+      <div class="rounded-2xl p-6 hover:-translate-y-1 transition-all" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="text-4xl mb-4">📋</div>
+        <h3 class="text-lg font-black mb-2 text-blue-400">Training Sessions</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Track distance, duration and session type. Watch your fitness grow over time.</p>
+      </div>
+      <div class="rounded-2xl p-6 hover:-translate-y-1 transition-all" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="text-4xl mb-4">📚</div>
+        <h3 class="text-lg font-black mb-2 text-yellow-400">Drill Library</h3>
+        <p class="text-white/50 text-sm leading-relaxed">14 professional drills across 6 categories with step-by-step instructions.</p>
+      </div>
+      <div class="rounded-2xl p-6 hover:-translate-y-1 transition-all" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="text-4xl mb-4">📅</div>
+        <h3 class="text-lg font-black mb-2 text-pink-400">Training Programs</h3>
+        <p class="text-white/50 text-sm leading-relaxed">6 built-in multi-week programs from Pre-Season Fitness to Goalkeeper Elite.</p>
+      </div>
+      <div class="rounded-2xl p-6 hover:-translate-y-1 transition-all" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="text-4xl mb-4">👥</div>
+        <h3 class="text-lg font-black mb-2 text-purple-400">Team Management</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Create teams, invite players, track squad stats and manage your roster.</p>
+      </div>
+      <div class="rounded-2xl p-6 hover:-translate-y-1 transition-all" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="text-4xl mb-4">🤖</div>
+        <h3 class="text-lg font-black mb-2 text-cyan-400">AI Coaching Insights</h3>
+        <p class="text-white/50 text-sm leading-relaxed">Personalized insights based on your data — streaks, goals per game and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <%!-- CTA --%>
+  <section class="relative z-10 text-center pb-32 px-8">
+    <h2 class="text-5xl font-black mb-4" style="font-family: Georgia, serif;">
+      Ready to <span class="text-green-400">dominate</span>?
+    </h2>
+    <p class="text-white/50 mb-8 text-lg">Join players who track smarter and train harder.</p>
+    <a href="/users/register"
+      class="inline-block px-10 py-5 rounded-full font-black text-xl transition-all hover:scale-105 text-white"
+      style="background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 0 60px rgba(34,197,94,0.5);">
+      Create Free Account →
+    </a>
+  </section>
+
+  <%!-- Footer --%>
+  <footer class="relative z-10 border-t border-white/10 py-8 text-center text-white/30 text-sm">
+    ⚽ SoccerTracker · Built for players who want to improve · Free forever
+  </footer>
+
+</div>
