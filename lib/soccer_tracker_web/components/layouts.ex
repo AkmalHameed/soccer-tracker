@@ -17,41 +17,53 @@ defmodule SoccerTrackerWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    <header class="navbar bg-base-300 px-4 sm:px-6 lg:px-8 shadow-lg">
+    <header class="navbar bg-base-300 px-4 sm:px-6 lg:px-8 shadow-lg sticky top-0 z-50">
       <div class="flex-1">
         <a href="/" class="flex items-center gap-2">
           <span class="text-2xl">⚽</span>
-          <span class="text-xl font-bold text-primary">Soccer Tracker</span>
+          <span class="text-xl font-bold text-primary">Soccer<span class="text-base-content">Tracker</span></span>
         </a>
       </div>
-      <div class="flex-none">
-        <ul class="flex items-center gap-2">
-          <%= if @current_scope do %>
-            <li><a href={~p"/dashboard"} class="btn btn-ghost btn-sm">🏠 Dashboard</a></li>
-            <li><a href={~p"/games"} class="btn btn-ghost btn-sm">🏟️ Matches</a></li>
-            <li><a href={~p"/sessions"} class="btn btn-ghost btn-sm">📋 Sessions</a></li>
-            <li><a href={~p"/library"} class="btn btn-ghost btn-sm">📚 Drills</a></li>
-            <li><a href={~p"/programs"} class="btn btn-ghost btn-sm">📅 Programs</a></li>
-            <li><a href={~p"/teams"} class="btn btn-ghost btn-sm">👥 Teams</a></li>
-            <li><a href={~p"/goals"} class="btn btn-ghost btn-sm">🎯 Goals</a></li>
-            <li class="ml-2 border-l border-base-content/20 pl-2">
-              <a href={~p"/users/settings"} class="btn btn-ghost btn-sm opacity-60">⚙️</a>
-            </li>
-            <li>
-              <a href={~p"/users/log-out"} class="btn btn-ghost btn-sm">Log out</a>
-            </li>
-          <% else %>
-            <li>
-              <a href={~p"/users/register"} class="btn btn-ghost btn-sm">Register</a>
-            </li>
-            <li>
-              <a href={~p"/users/log-in"} class="btn btn-primary btn-sm">Log in</a>
-            </li>
-          <% end %>
-          <li>
-            <.theme_toggle />
-          </li>
-        </ul>
+      <div class="flex-none gap-2">
+        <%= if @current_scope do %>
+          <%!-- Desktop nav --%>
+          <ul class="hidden lg:flex items-center gap-1">
+            <li><a href={~p"/dashboard"} class="btn btn-ghost btn-sm">Dashboard</a></li>
+            <li><a href={~p"/games"} class="btn btn-ghost btn-sm">Matches</a></li>
+            <li><a href={~p"/sessions"} class="btn btn-ghost btn-sm">Sessions</a></li>
+            <li><a href={~p"/library"} class="btn btn-ghost btn-sm">Drills</a></li>
+            <li><a href={~p"/programs"} class="btn btn-ghost btn-sm">Programs</a></li>
+            <li><a href={~p"/teams"} class="btn btn-ghost btn-sm">Teams</a></li>
+            <li><a href={~p"/goals"} class="btn btn-ghost btn-sm">Goals</a></li>
+          </ul>
+          <%!-- User dropdown --%>
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar placeholder">
+              <div class="bg-primary text-primary-content rounded-full w-9">
+                <span class="text-sm font-bold">
+                  {String.upcase(String.slice(@current_scope.user.email, 0, 1))}
+                </span>
+              </div>
+            </div>
+            <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-200 rounded-box z-50 mt-3 w-52 p-2 shadow-xl border border-base-300">
+              <li class="menu-title text-xs opacity-50 px-2 pb-1">{@current_scope.user.email}</li>
+              <li class="lg:hidden"><a href={~p"/dashboard"}>🏠 Dashboard</a></li>
+              <li class="lg:hidden"><a href={~p"/games"}>🏟️ Matches</a></li>
+              <li class="lg:hidden"><a href={~p"/sessions"}>📋 Sessions</a></li>
+              <li class="lg:hidden"><a href={~p"/library"}>📚 Drills</a></li>
+              <li class="lg:hidden"><a href={~p"/programs"}>📅 Programs</a></li>
+              <li class="lg:hidden"><a href={~p"/teams"}>👥 Teams</a></li>
+              <li class="lg:hidden"><a href={~p"/goals"}>🎯 Goals</a></li>
+              <li><hr class="my-1 border-base-300" /></li>
+              <li><a href={~p"/users/settings"}>⚙️ Settings</a></li>
+              <li><a href={~p"/users/log-out"} data-method="delete">🚪 Log out</a></li>
+            </ul>
+          </div>
+        <% else %>
+          <a href={~p"/users/register"} class="btn btn-ghost btn-sm">Register</a>
+          <a href={~p"/users/log-in"} class="btn btn-primary btn-sm">Log in</a>
+        <% end %>
+        <.theme_toggle />
       </div>
     </header>
 
@@ -105,28 +117,13 @@ defmodule SoccerTrackerWeb.Layouts do
     ~H"""
     <div class="card relative flex flex-row items-center border-2 border-base-300 bg-base-300 rounded-full">
       <div class="absolute w-1/3 h-full rounded-full border-1 border-base-200 bg-base-100 brightness-200 left-0 [[data-theme=light]_&]:left-1/3 [[data-theme=dark]_&]:left-2/3 transition-[left]" />
-
-      <button
-        class="flex p-2 cursor-pointer w-1/3"
-        phx-click={JS.dispatch("phx:set-theme")}
-        data-phx-theme="system"
-      >
+      <button class="flex p-2 cursor-pointer w-1/3" phx-click={JS.dispatch("phx:set-theme")} data-phx-theme="system">
         <.icon name="hero-computer-desktop-micro" class="size-4 opacity-75 hover:opacity-100" />
       </button>
-
-      <button
-        class="flex p-2 cursor-pointer w-1/3"
-        phx-click={JS.dispatch("phx:set-theme")}
-        data-phx-theme="light"
-      >
+      <button class="flex p-2 cursor-pointer w-1/3" phx-click={JS.dispatch("phx:set-theme")} data-phx-theme="light">
         <.icon name="hero-sun-micro" class="size-4 opacity-75 hover:opacity-100" />
       </button>
-
-      <button
-        class="flex p-2 cursor-pointer w-1/3"
-        phx-click={JS.dispatch("phx:set-theme")}
-        data-phx-theme="dark"
-      >
+      <button class="flex p-2 cursor-pointer w-1/3" phx-click={JS.dispatch("phx:set-theme")} data-phx-theme="dark">
         <.icon name="hero-moon-micro" class="size-4 opacity-75 hover:opacity-100" />
       </button>
     </div>
