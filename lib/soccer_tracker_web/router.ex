@@ -35,7 +35,10 @@ defmodule SoccerTrackerWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     live_session :require_authenticated_user,
-      on_mount: [{SoccerTrackerWeb.UserAuth, :require_authenticated}] do
+      on_mount: [
+        {SoccerTrackerWeb.UserAuth, :require_authenticated},
+        {SoccerTrackerWeb.UserAuth, :mount_current_scope}
+      ] do
 
       live "/users/settings", UserLive.Settings, :edit
       live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
