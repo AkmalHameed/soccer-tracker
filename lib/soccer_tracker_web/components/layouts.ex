@@ -61,7 +61,7 @@ defmodule SoccerTrackerWeb.Layouts do
           </div>
         <% else %>
           <a href={~p"/users/register"} class="btn btn-ghost btn-sm">Register</a>
-          <a href={~p"/users/log-in"} class="btn btn-primary btn-sm">Log in</a>
+          <li><.link href={~p"/users/log-out"} method="delete">🚪 Log out</.link></li>
         <% end %>
         <.theme_toggle />
       </div>
