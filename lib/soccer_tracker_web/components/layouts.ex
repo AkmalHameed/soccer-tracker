@@ -36,13 +36,6 @@ defmodule SoccerTrackerWeb.Layouts do
             <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-50 mt-3 w-56 p-2 shadow-xl border border-base-300">
               <li class="px-3 py-2 text-xs opacity-50 truncate">{@current_scope.user.email}</li>
               <div class="divider my-0"></div>
-              <li class="lg:hidden"><a href={~p"/dashboard"}>🏠 Dashboard</a></li>
-              <li class="lg:hidden"><a href={~p"/games"}>🏟️ Matches</a></li>
-              <li class="lg:hidden"><a href={~p"/sessions"}>📋 Sessions</a></li>
-              <li class="lg:hidden"><a href={~p"/library"}>📚 Drills</a></li>
-              <li class="lg:hidden"><a href={~p"/programs"}>📅 Programs</a></li>
-              <li class="lg:hidden"><a href={~p"/teams"}>👥 Teams</a></li>
-              <li class="lg:hidden"><a href={~p"/goals"}>🎯 Goals</a></li>
               <li><a href={~p"/users/settings"}>⚙️ Settings</a></li>
               <li>
                 <form action={~p"/users/log-out"} method="post" style="margin:0">
@@ -63,11 +56,43 @@ defmodule SoccerTrackerWeb.Layouts do
       </div>
     </header>
 
-    <main class="px-4 py-8 sm:px-6 lg:px-8">
+    <main class="px-4 py-8 sm:px-6 lg:px-8 pb-24 lg:pb-8">
       <div class="mx-auto max-w-6xl">
         {render_slot(@inner_block)}
       </div>
     </main>
+
+    <%!-- Bottom Mobile Nav --%>
+    <%= if @current_scope do %>
+      <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-base-300"
+        style="background: rgba(20,30,20,0.95); backdrop-filter: blur(12px);">
+        <div class="flex items-center justify-around px-2 py-2">
+          <a href={~p"/dashboard"} class="flex flex-col items-center gap-1 px-3 py-1 rounded-xl hover:bg-base-300 transition-colors">
+            <span class="text-xl">🏠</span>
+            <span class="text-xs opacity-70">Home</span>
+          </a>
+          <a href={~p"/games"} class="flex flex-col items-center gap-1 px-3 py-1 rounded-xl hover:bg-base-300 transition-colors">
+            <span class="text-xl">🏟️</span>
+            <span class="text-xs opacity-70">Matches</span>
+          </a>
+          <a href={~p"/sessions/new"} class="flex flex-col items-center gap-1 px-2 py-1">
+            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-lg -mt-5"
+              style="box-shadow: 0 0 20px rgba(34,197,94,0.5);">
+              <span class="text-2xl">⚽</span>
+            </div>
+            <span class="text-xs opacity-70 mt-1">Log</span>
+          </a>
+          <a href={~p"/library"} class="flex flex-col items-center gap-1 px-3 py-1 rounded-xl hover:bg-base-300 transition-colors">
+            <span class="text-xl">📚</span>
+            <span class="text-xs opacity-70">Drills</span>
+          </a>
+          <a href={~p"/goals"} class="flex flex-col items-center gap-1 px-3 py-1 rounded-xl hover:bg-base-300 transition-colors">
+            <span class="text-xl">🎯</span>
+            <span class="text-xs opacity-70">Goals</span>
+          </a>
+        </div>
+      </nav>
+    <% end %>
 
     <.flash_group flash={@flash} />
     """
