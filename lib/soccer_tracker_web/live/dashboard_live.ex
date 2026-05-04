@@ -128,13 +128,13 @@ defmodule SoccerTrackerWeb.DashboardLive do
           <div class="card bg-base-200 shadow-xl">
             <div class="card-body">
               <h2 class="card-title">📈 Monthly Sessions</h2>
-              <div class="flex items-end gap-2 h-24 mt-4">
+              <div class="flex items-end gap-2 mt-4" style="height: 80px;">
                 <% max_count = Enum.max_by(@monthly_data, & &1.count).count %>
                 <%= for item <- @monthly_data do %>
                   <div class="flex flex-col items-center flex-1 gap-1">
                     <span class="text-xs font-bold text-primary">{item.count}</span>
                     <div class="w-full bg-primary rounded-t transition-all"
-                      style={"height: #{if max_count > 0, do: max(round(item.count / max_count * 60), 8), else: 4}px; max-height: 60px;"}></div>
+                      style={"height: #{if max_count > 0, do: max(round(item.count / max_count * 48), 6), else: 4}px; max-height: 48px;"}></div>
                     <span class="text-xs opacity-50 -rotate-45 origin-top-left whitespace-nowrap">
                       {item.month |> String.split(" ") |> List.first()}
                     </span>
