@@ -20,6 +20,8 @@ defmodule SoccerTrackerWeb.Router do
   scope "/", SoccerTrackerWeb do
     pipe_through :browser
     get "/", PageController, :home
+    get "/privacy", PageController, :privacy
+    get "/support", PageController, :support
   end
 
   if Application.compile_env(:soccer_tracker, :dev_routes) do
