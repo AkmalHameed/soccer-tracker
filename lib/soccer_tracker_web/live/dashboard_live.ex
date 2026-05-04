@@ -134,7 +134,7 @@ defmodule SoccerTrackerWeb.DashboardLive do
                   <div class="flex flex-col items-center flex-1 gap-1">
                     <span class="text-xs font-bold text-primary">{item.count}</span>
                     <div class="w-full bg-primary rounded-t transition-all"
-                      style={"height: #{if max_count > 0, do: round(item.count / max_count * 72), else: 4}px"}></div>
+                      style={"height: #{if max_count > 0, do: max(round(item.count / max_count * 60), 8), else: 4}px; max-height: 60px;"}></div>
                     <span class="text-xs opacity-50 -rotate-45 origin-top-left whitespace-nowrap">
                       {item.month |> String.split(" ") |> List.first()}
                     </span>
