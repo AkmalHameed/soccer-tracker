@@ -65,6 +65,11 @@ defmodule SoccerTrackerWeb.UserLive.Settings do
           Save Password
         </.button>
       </.form>
+      <div class="divider" />
+      <div class="flex flex-col gap-3 mt-4">
+        <a href="/privacy" class="btn btn-ghost btn-sm w-full">Privacy Policy</a>
+        <a href="/support" class="btn btn-ghost btn-sm w-full">Support and Help</a>
+      </div>
     </Layouts.app>
     """
   end
