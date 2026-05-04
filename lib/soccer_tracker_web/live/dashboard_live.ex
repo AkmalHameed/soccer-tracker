@@ -135,7 +135,7 @@ defmodule SoccerTrackerWeb.DashboardLive do
                     <span class="text-xs font-bold text-primary">{item.count}</span>
                     <div class="bg-primary rounded-t transition-all"
                       style={"width: 32px; height: #{if max_count > 0, do: max(round(item.count / max_count * 60), 6), else: 4}px;"}></div>
-                    <span class="text-xs opacity-50 -rotate-45 origin-top-left whitespace-nowrap">
+                    <span class="text-xs opacity-50 text-center">
                       {item.month |> String.split(" ") |> List.first()}
                     </span>
                   </div>
