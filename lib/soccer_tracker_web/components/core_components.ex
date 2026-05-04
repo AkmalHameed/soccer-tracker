@@ -18,7 +18,7 @@ defmodule SoccerTrackerWeb.CoreComponents do
       :if={msg = render_slot(@inner_block) || Phoenix.Flash.get(@flash, @kind)}
       id={@id}
       phx-click={JS.push("lv:clear-flash", value: %{key: @kind}) |> hide("##{@id}")}
-      phx-mounted={JS.hide(to: "##{@id}", transition: {"transition-opacity duration-1500", "opacity-100", "opacity-0"}, time: 8000)}
+      phx-mounted={JS.hide(to: "##{@id}", transition: {"transition-opacity duration-1000 delay-4000", "opacity-100", "opacity-0"}, time: 5000)}
       role="alert"
       class="toast toast-top toast-end z-50"
       {@rest}
