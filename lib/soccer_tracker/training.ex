@@ -191,14 +191,14 @@ defmodule SoccerTracker.Training do
 
     insights =
       if stats.sessions >= 10 and stats.total_distance > 50 do
-        ["💪 You've covered #{stats.total_distance}km across #{stats.sessions} sessions — great endurance!" | insights]
+        ["💪 You've covered #{stats.total_distance}km across #{stats.sessions} sessions. Great endurance!" | insights]
       else
         insights
       end
 
     insights =
       if stats.win_rate >= 60 do
-        ["🏆 #{stats.win_rate}% win rate — you're on fire! Keep up the momentum." | insights]
+        ["🏆 #{stats.win_rate}% win rate. You're on fire! Keep up the momentum." | insights]
       else
         insights
       end
@@ -216,15 +216,15 @@ defmodule SoccerTracker.Training do
       if stats.goals > 0 and stats.games > 0 do
         rate = Float.round(stats.goals / stats.games, 2)
         if rate >= 0.5,
-          do: ["⚽ #{rate} goals per game — clinical finishing!" | insights],
+          do: ["⚽ #{rate} goals per game clinical finishing!" | insights],
           else: insights
       else
         insights
-      end
+
 
     insights =
       if insights == [] do
-        ["📋 Keep logging sessions and games — insights will appear as your data grows!"]
+        ["📋 Keep logging sessions and games insights will appear as your data grows!"]
       else
         insights
       end
