@@ -220,6 +220,7 @@ defmodule SoccerTracker.Training do
           else: insights
       else
         insights
+      end
 
 
     insights =
