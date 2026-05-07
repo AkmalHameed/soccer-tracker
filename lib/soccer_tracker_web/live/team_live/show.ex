@@ -23,6 +23,11 @@ defmodule SoccerTrackerWeb.TeamLive.Show do
     end
   end
 
+  def handle_event("delete_team", _params, socket) do
+    Teams.delete_team(socket.assigns.team)
+    {:noreply, socket |> put_flash(:info, "Team deleted.") |> push_navigate(to: ~p"/teams")}
+  end
+
   def handle_event("remove_member", %{"user_id" => user_id}, socket) do
     Teams.remove_member(socket.assigns.team.id, String.to_integer(user_id))
     team = Teams.get_team!(socket.assigns.team.id)
@@ -42,6 +47,9 @@ defmodule SoccerTrackerWeb.TeamLive.Show do
             <h1 class="text-3xl font-bold">{@team.name}</h1>
             <p class="opacity-60">{@team.description}</p>
           </div>
+          <%= if @is_coach do %>
+            <button phx-click="delete_team" data-confirm="Are you sure?" class="btn btn-error btn-sm">Delete Team</button>
+          <% end %>
         </div>
 
         <%!-- Stats Row --%>
