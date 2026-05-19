@@ -19,7 +19,9 @@ defmodule SoccerTrackerWeb.ProgramLive.Index do
         my_program_ids = Enum.map(my_programs, & &1.program_id)
         {:noreply, socket |> put_flash(:info, "Enrolled! Program started.") |> assign(my_programs: my_programs, my_program_ids: my_program_ids)}
       _ ->
-        {:noreply, put_flash(socket, :error, "Already enrolled.")}
+        my_programs = Programs.list_my_programs(socket.assigns.current_scope)
+        my_program_ids = Enum.map(my_programs, & &1.program_id)
+        {:noreply, socket |> put_flash(:info, "Enrolled! Program started.") |> assign(my_programs: my_programs, my_program_ids: my_program_ids)}
     end
   end
 
