@@ -14,9 +14,16 @@ defmodule SoccerTracker.Programs do
   end
 
   def enroll(%Scope{user: user}, program_id) do
-    %UserProgram{user_id: user.id, program_id: program_id,
-      started_at: Date.utc_today(), active: true, current_week: 1}
-    |> Repo.insert(on_conflict: :nothing)
+    case Repo.get_by(UserProgram, user_id: user.id, program_id: program_id) do
+      nil ->
+        %UserProgram{user_id: user.id, program_id: program_id,
+          started_at: Date.utc_today(), active: true, current_week: 1}
+        |> Repo.insert()
+      existing ->
+        existing
+        |> Ecto.Changeset.change(active: true, current_week: 1, started_at: Date.utc_today(), completed_at: nil)
+        |> Repo.update()
+    end
   end
 
   def list_my_programs(%Scope{user: user}) do
